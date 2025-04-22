@@ -3,11 +3,17 @@
 --empty:#3a3a3c;
 --wrong:#b59f3b;
 --right:#538d4e;
+--light-color:white;
 }
 
 html {
     /* 1rem = 10 px*/
     font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body{
+background-color: var(--default);
   }
 
 #game {
@@ -15,4 +21,38 @@ html {
     place-items: center;
     width: 100%;
     height:60rem;
+}
+
+.grid{
+    display:grid;
+    grid-template-rows: (repeat(6,auto));
+    grid-template-columns: (repeat(5,auto));
+}
+
+.box{
+    width: 6rem;
+    height: 6rem;
+    border: 0.2rem solid var(--empty);
+    margin : 0.4rem;
+    color:var(--light-color);
+
+    /*Convertit en majuscule*/
+    text-transform: uppercase;
+
+    /*centre les lettres*/
+    display:grid;
+    place-items: center;
+    font-size: 3rem;
+}
+
+.box__empty{
+
+}
+
+.box__wrong{
+
+}
+
+.box__right{
+
 }
