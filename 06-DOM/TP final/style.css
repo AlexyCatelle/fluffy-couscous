@@ -25,8 +25,8 @@ background-color: var(--default);
 
 .grid{
     display:grid;
-    grid-template-rows: (repeat(6,auto));
-    grid-template-columns: (repeat(5,auto));
+    grid-template-rows: repeat(6,auto);
+    grid-template-columns: repeat(5,auto);
 }
 
 .box{
@@ -46,13 +46,13 @@ background-color: var(--default);
 }
 
 .box__empty{
-
+background-color: var(--empty);
 }
 
 .box__wrong{
-
+background-color: var(--wrong);
 }
 
 .box__right{
-
+background-color: var(--right);
 }
