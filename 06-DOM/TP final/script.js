@@ -5,15 +5,18 @@
 // TESTS END
 
 const state = {
-    grid: Array(6)
-        .fill()
-        .map(() => Array(5).fill('')),
+    grid: Array(6).fill().map(() => Array(5).fill('')),
     currentRow: 0,
     currentCol: 0,
 };
 
 function updateGrid() {
-
+    for (let i = 0; i < state.grid.length; i++) {
+        for (let j = 0; j < state.grid[i].length; j++) {
+            const box = document.getElementById(`box${i}${j}`);
+            box.textContent = state.grid[i][j];
+        };
+    };
 };
 
 function drawBox(container, row, col, letter = '') {
@@ -38,11 +41,13 @@ function drawGrid(container) {
             drawBox(grid, i, j);
         }
     }
+    container.appendChild(grid);
 };
 
 function startup() {
     const game = document.getElementById('game');
     drawGrid(game);
+
 };
 
 startup();
