@@ -56,3 +56,27 @@ background-color: var(--wrong);
 .box__right{
 background-color: var(--right);
 }
+
+#virtual-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-top: 2rem;
+  }
+  .keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+  }
+  .key {
+    padding: 1rem 1.5rem;
+    border-color: var(--empty);
+    border-radius: .5rem;
+    background-color: var(--default);
+    color:var(--light-color);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .key:active {
+    background-color: var(--empty);
+  }
