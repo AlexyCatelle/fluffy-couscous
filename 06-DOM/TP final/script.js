@@ -150,7 +150,16 @@ function addLetter(letter) {
     state.currentCol++;
 };
 
+// Retire une lettre
+function removeLetter() {
+    if (state.currentCol === 0) return;
 
+    // supprime la lettre de la case précédente.
+    state.grid[state.currentRow][state.currentCol - 1] = '';
+
+    // recule sur la case vide
+    state.currentCol--;
+};
 
 function startup() {
     const game = document.getElementById('game');
