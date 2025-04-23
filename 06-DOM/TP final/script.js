@@ -3,6 +3,36 @@
 //alert("hello world !");
 
 // TESTS END
+
+// START KEYBOARD
+const AZERTY_KEYS = [
+    ['A', 'Z', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+    ['Q', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M'],
+    ['Enter', 'W', 'X', 'C', 'V', 'B', 'N', '⌫']
+];
+
+// Création du clavier
+const keyboardContainer = document.getElementById('virtual-keyboard');
+
+AZERTY_KEYS.forEach(row => {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('keyboard-row');
+
+    row.forEach(key => {
+        const keyButton = document.createElement('button');
+        keyButton.textContent = key;
+        keyButton.classList.add('key');
+        keyButton.setAttribute('data-key', key);
+        rowDiv.appendChild(keyButton);
+    });
+
+    keyboardContainer.appendChild(rowDiv);
+});
+
+
+// END KEYBOARD
+// START GAME
+
 const dictionary = [
     'eddie',
     'blaze',
@@ -20,7 +50,6 @@ const dictionary = [
     'quiet',
     'alarm',
     'moira'
-
 ];
 
 const state = {
@@ -64,33 +93,49 @@ function drawGrid(container) {
     container.appendChild(grid);
 };
 
+function keyResponds(key) {
+    if (key === 'Enter') {
+        if (state.currentCol === 5) {
+            const word = getCurrentWord();
+            if (isWordValid(word)) {
+                revealWord(word);
+                state.currentRow++;
+                state.currentCol = 0;
+            }
+            else {
+                alert('Mot non valide.');
+            }
+        }
+    };
+
+    if (key === 'Backspace' || key === '⌫') {
+        removeLetter();
+    };
+
+    if (isLetter(key)) {
+        addLetter(key);
+    };
+
+};
+
+// Ecouteur d'évenement sur le clavier physique.
 function registerKeyboardEvents() {
     document.body.onkeydown = (e) => {
-        const key = e.key;
-
-        if (key === 'Enter') {
-            if (state.currentCol === 5) {
-                const word = getCurrentWord();
-                if (isWordValid(word)) {
-                    revealWord(word);
-                    state.currentRow++;
-                    state.currentCol = 0;
-                }
-                else {
-                    alert('Mot non valide.');
-                }
-            }
-        };
-
-        if (key === 'Backspace') {
-            removeLetter();
-        };
-
-        if (isLetter(key)) {
-            addLetter(key);
-        };
+        keyResponds(e.key);
         updateGrid();
     };
+};
+
+// Ecouteur d'évenement sur le clavier virtuel.
+
+function registerVirtualKeyboardEvents() {
+    keyboardContainer.addEventListener('click', (e) => {
+        if (e.target.matches('button.key')) {
+            const key = e.target.getAttribute('data-key');
+            keyResponds(key);
+            updateGrid();
+        }
+    });
 };
 
 function getCurrentWord() {
@@ -166,9 +211,12 @@ function startup() {
     drawGrid(game);
 
     registerKeyboardEvents();
+    registerVirtualKeyboardEvents();
 
     console.log(state.secret);
 
 };
 
 startup();
+
+// END GAME
