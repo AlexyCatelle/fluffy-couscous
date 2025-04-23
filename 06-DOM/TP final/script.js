@@ -127,7 +127,6 @@ function registerKeyboardEvents() {
 };
 
 // Ecouteur d'évenement sur le clavier virtuel.
-
 function registerVirtualKeyboardEvents() {
     keyboardContainer.addEventListener('click', (e) => {
         if (e.target.matches('button.key')) {
@@ -173,9 +172,11 @@ function revealWord(guess) {
 
     if (isWinner) {
         alert('Félicitations !');
+        location.reload();
     }
     else if (isGameOver) {
         alert(`Défaite ! le mot était ${state.secret}.`);
+        location.reload();
     }
 
 };
