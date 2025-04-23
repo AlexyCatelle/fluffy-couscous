@@ -135,6 +135,12 @@ function revealWord(guess) {
 
 };
 
+// Vérifie que la touche préssée est une lettre.
+function isLetter(key) {
+    return key.length === 1 && key.match(/[a-z]/i);
+};
+
+
 function startup() {
     const game = document.getElementById('game');
     drawGrid(game);
