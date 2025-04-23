@@ -94,7 +94,7 @@ function drawGrid(container) {
 };
 
 function keyResponds(key) {
-    if (key === 'Enter') {
+    if (key === 'Enter' || key === 'enter') {
         if (state.currentCol === 5) {
             const word = getCurrentWord();
             if (isWordValid(word)) {
@@ -131,7 +131,7 @@ function registerKeyboardEvents() {
 function registerVirtualKeyboardEvents() {
     keyboardContainer.addEventListener('click', (e) => {
         if (e.target.matches('button.key')) {
-            const key = e.target.getAttribute('data-key');
+            const key = e.target.getAttribute('data-key').toLowerCase();
             keyResponds(key);
             updateGrid();
         }
@@ -213,7 +213,7 @@ function startup() {
     registerKeyboardEvents();
     registerVirtualKeyboardEvents();
 
-    console.log(state.secret);
+    //console.log(state.secret);
 
 };
 
