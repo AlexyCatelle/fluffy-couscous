@@ -4,22 +4,22 @@
 
 // TESTS END
 const dictionary = [
-    'Buck',
-    'Eddie',
-    'Blaze',
-    'Crash',
-    'Avion',
-    'Panic',
-    'Alert',
-    'Bobby',
-    'Chris',
-    'Grant',
-    'Harry',
-    'Karen',
-    'Susan',
-    'Linda',
-    'Quiet',
-    'Alarm'
+    'eddie',
+    'blaze',
+    'crash',
+    'avion',
+    'panic',
+    'alert',
+    'bobby',
+    'chris',
+    'grant',
+    'harry',
+    'karen',
+    'susan',
+    'linda',
+    'quiet',
+    'alarm',
+    'moira'
 
 ];
 
@@ -71,7 +71,7 @@ function registerKeyboardEvents() {
         if (key === 'Enter') {
             if (state.currentCol === 5) {
                 const word = getCurrentWord();
-                if (isWorldValid(word)) {
+                if (isWordValid(word)) {
                     revealWord(word);
                     state.currentRow++;
                     state.currentCol = 0;
@@ -166,6 +166,8 @@ function startup() {
     drawGrid(game);
 
     registerKeyboardEvents();
+
+    console.log(state.secret);
 
 };
 
