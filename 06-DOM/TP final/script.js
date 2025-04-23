@@ -44,9 +44,44 @@ function drawGrid(container) {
     container.appendChild(grid);
 };
 
+function registerKeyboardEvents() {
+    document.body.onkeydown = (e) => {
+        const key = e.key;
+
+        if (key === 'Enter') {
+            if (state.currentCol === 5) {
+                const word = getCurrentWord();
+                if (isWorldValid(word)) {
+                    revealWord(word);
+                    state.currentRow++;
+                    state.currentCol = 0;
+                }
+                else {
+                    alert('Mot non valide.');
+                }
+            }
+        };
+
+        if (key === 'Backspace') {
+            removeLetter();
+        };
+
+        if (isLetter(key)) {
+            addLetter(key);
+        };
+        updateGrid();
+    };
+};
+
+function getCurrentWord() {
+
+};
+
 function startup() {
     const game = document.getElementById('game');
     drawGrid(game);
+
+    registerKeyboardEvents();
 
 };
 
