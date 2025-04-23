@@ -140,6 +140,17 @@ function isLetter(key) {
     return key.length === 1 && key.match(/[a-z]/i);
 };
 
+// Ajoute la lettre
+function addLetter(letter) {
+    // Si il ne reste plus de la place dans la ligne.
+    if (state.currentCol === 5) return;
+
+    // Si il reste de la place dans la ligne.
+    state.grid[state.currentRow][state.currentCol] = letter;
+    state.currentCol++;
+};
+
+
 
 function startup() {
     const game = document.getElementById('game');
