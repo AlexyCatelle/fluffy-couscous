@@ -10,6 +10,8 @@ users
 
 SELECT
  MIN(salary)
+ AS
+ min_salaire
 FROM 
 users
 ;
@@ -19,6 +21,8 @@ users
 
 SELECT
 MAX(age)
+AS
+max_age_ingenieur
 FROM 
 users
 WHERE
@@ -30,6 +34,8 @@ job = "Engineer"
 
 SELECT
 AVG(salary)
+AS
+moyenne_salaires_prof
 FROM
 users
 WHERE
@@ -40,6 +46,8 @@ job = "Teacher"
 
 SELECT
 SUM(salary)
+AS
+somme_salaires
 FROM
 users
 ;
