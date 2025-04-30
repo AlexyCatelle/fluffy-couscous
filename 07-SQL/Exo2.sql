@@ -1,50 +1,45 @@
 USE formation_sql;
 
-SELECT
-last_name,
-first_name
-FROM
-users
-WHERE
-first_name
-LIKE
-'d%'
-ORDER BY last_name ASC;
-
-
-SELECT
-last_name,
-first_name
-FROM
-users
-WHERE
+SELECT first_name,
 last_name
-LIKE
-'%son'
-ORDER BY
-last_name ASC;
+FROM users
+WHERE job IN("Engineer","Developper")
+AND
+birth_location IN('Londres','Paris','Berlin')
+AND
+age 
+BETWEEN
+25
+AND
+35
+AND
+salary >= 2500
+;
 
-SELECT
+SELECT first_name,
 last_name,
-first_name
+age
 FROM
 users
-WHERE
-first_name
-LIKE
-'_____'
 ORDER BY
-last_name ASC;
+age DESC
+LIMIT 5;
 
-SELECT
-last_name,
-first_name,
-job
+SELECT first_name,
+last_name
 FROM
 users
-WHERE
-job
-LIKE
-'%doctor%'
 ORDER BY
-last_name ASC;
+last_name ASC
+LIMIT 5
+OFFSET 5;
+
+SELECT first_name,
+last_name,
+salary
+FROM
+users
+ORDER BY
+salary DESC
+LIMIT 3;
+
