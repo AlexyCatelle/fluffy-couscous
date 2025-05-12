@@ -52,5 +52,28 @@ echo $concatenat . PHP_EOL;
 // Récupére uniquement le type d'une variable.
 echo "Type de mon booléen : ", gettype($booleen), PHP_EOL;
 
-
+// La fonction print() qui permet d'afficher le contenue d'une variable. 
 print($concatenat);
+echo PHP_EOL;
+
+// Récupére la saisie de l'utilisateur;
+//Elle prend en paramètre une chaine de charactère qui l'affiche à l'utilisateur.
+$prenom = readline("Veuillez entrer votre prénom : ");
+echo $prenom, PHP_EOL;
+
+//Pour changer le type de notre saisi, nous devons le cast directement (typeSouhaité)readline();
+$age =(int)readline("Veuillez entrer votre age :");
+echo "Votre age est $age ans.", PHP_EOL;
+
+$pseudo = "totoDu59";
+$motDePasse = "topSecret";
+
+// Concatenation avec le '.';
+echo $pseudo . " : " . $motDePasse, PHP_EOL;
+
+// Interpolation
+echo "pseudo : $pseudo, mot de passe : $motDePasse", PHP_EOL;
+
+// On peut détruire une variable directement avec la méthode 'unset()'.
+
+unset($motDePasse);
