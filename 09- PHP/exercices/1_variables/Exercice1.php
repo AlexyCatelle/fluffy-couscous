@@ -15,3 +15,5 @@
     echo MON_NOM, PHP_EOL;
     echo $age, PHP_EOL;
     echo $mail, PHP_EOL;
+
+    echo "Je m'appelle ",MON_PRENOM, " ", MON_NOM, ", j'ai $age ans et mon adresse mail est : $mail .";
